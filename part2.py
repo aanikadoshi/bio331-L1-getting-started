@@ -19,14 +19,23 @@ def main():
     print(count_edges)
 
     #list of nodes assigned to variable nodes
-    nodes = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
-    print(nodes)
+    nodes = []
+    for edge in graph:
+        node1 = edge[0]
+        node2 = edge[1]
+        print("EDGE:", node1, node2)
+        if node1 not in nodes: 
+            nodes.append(node1)
+        if node2 not in nodes:
+            nodes.append(node2)
+    print('nodes:', nodes)
 
     #count and print nodes
     count_nodes = len(nodes)
     print(count_nodes)
 
     viz_graph(graph,nodes,'graph.html')
+    print('hello')
 
     return # done with main()
 
@@ -42,7 +51,9 @@ def viz_graph(edgelist,nodes,outfile):
 
     G = Network(directed=False) # create undirected graph
     for n in nodes:
-        G.add_node(n, label=n, color='#FFFFFF', shape = 'diamond')
+        d = get_degree(n, edgelist)
+        print(n,d)
+        G.add_node(n, label=n, color="#8FD4F9", shape = 'dot', size = d*5)
     for u,v in edgelist:
         G.add_edge(u, v, color='#000000')
     G.toggle_physics(True) 
@@ -59,8 +70,13 @@ def get_degree(node,edgelist):
     :returns: int
     """
     
-
-    return 
+    degrees = 0
+    for i in edgelist:
+        if i[0] == node:
+            degrees = degrees + 1
+        if i[1] == node:
+            degrees = degrees + 1
+    return degrees
 
 # keep this at the bottom of your file.
 if __name__ == '__main__':
