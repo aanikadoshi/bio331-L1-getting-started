@@ -10,6 +10,24 @@ def main():
     graph = [['A','B'],['A','C'],['A','D'],['A','E'],['A','F'],['B','F'],['C','D'],['E','F'],['E','G']]
     print('graph:',graph)
 
+    #print on each line
+    for i in graph:
+        print(i)
+
+    #count edges
+    count_edges = len(graph)
+    print(count_edges)
+
+    #list of nodes assigned to variable nodes
+    nodes = ['A', 'B', 'C', 'D', 'E', 'F', 'G']
+    print(nodes)
+
+    #count and print nodes
+    count_nodes = len(nodes)
+    print(count_nodes)
+
+    viz_graph(graph,nodes,'graph.html')
+
     return # done with main()
 
 def viz_graph(edgelist,nodes,outfile):
