@@ -40,6 +40,15 @@ def viz_graph(edgelist,nodes,outfile):
     :returns: None
     """
 
+    G = Network(directed=False) # create undirected graph
+    for n in nodes:
+        G.add_node(n, label=n, color='#FFFFFF', shape = 'diamond')
+    for u,v in edgelist:
+        G.add_edge(u, v, color='#000000')
+    G.toggle_physics(True) 
+    G.show_buttons(filter_=['physics'])
+    G.write_html(outfile)
+
     return
 
 def get_degree(node,edgelist):
@@ -49,6 +58,7 @@ def get_degree(node,edgelist):
     :param: edgelist - lis of two-element lists
     :returns: int
     """
+    
 
     return 
 
