@@ -12,7 +12,7 @@ def main():
 def return5():
     # this function should return the integer 5. 
     # It currently returns None
-    return None
+    return 5
 
 
 # keep this at the bottom of your file.
